@@ -1,0 +1,47 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# Node / Java build output in samples
+node_modules/
+target/
+package-lock.json
+
+# AWS CDK
+cdk.out/
+cdk.context.json
+
+# Local run output
+remediation-output/
+
+# Kept locally, not published: demo projects, evaluation harness, diagram sources
+samples/
+eval/
+diagrams/*.svg
+diagrams/*.tsx
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+.aws-creds*
+*creds*.sh
+*credentials*
+.bedrock_agentcore.yaml
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+
+# ASH scan output (the committed summary lives in docs/security/)
+.ash/ash_output/

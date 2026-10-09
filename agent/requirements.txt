@@ -1,0 +1,10 @@
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+# Pinned to releases at least 7 days old (see exclude-newer in pyproject.toml).
+strands-agents==1.56.0
+bedrock-agentcore==1.23.1
+boto3==1.43.99
+defusedxml==0.7.1
+aws-opentelemetry-distro==0.20.0
+# Security floor for a transitive dependency (strands-agents -> mcp): GHSA-42vr-xj54-vc7v
+PyJWT==2.15.1

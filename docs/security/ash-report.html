@@ -1,0 +1,1732 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ASH Security Scan Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+            margin-top: 20px;
+        }
+        .summary-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .severity-error { color: #dc3545; }
+        .severity-warning { color: #fd7e14; }
+        .severity-note { color: #ffc107; }
+        .severity-none { color: #28a745; }
+        .status-passed { color: #28a745; font-weight: bold; }
+        .status-failed { color: #dc3545; font-weight: bold; }
+        .status-error { color: #dc3545; font-weight: bold; }
+        .status-skipped { color: #6c757d; font-weight: bold; }
+        .status-missing { color: #fd7e14; font-weight: bold; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #dee2e6;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .metadata-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        .help-text {
+            background: #e9f5ff;
+            border: 1px solid #b8daff;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+        .help-text h4 {
+            margin-top: 0;
+            color: #0056b3;
+        }
+        .help-text ul {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ASH Security Scan Results</h1>
+
+        <div class="metadata-section">
+            <p><strong>Project:</strong> ASH</p>
+            <p><strong>Scan executed:</strong> 2026-10-05T22:33:15+00:00</p>
+            <p><strong>Report generated:</strong> 2026-10-05T22:35:22+00:00</p>
+            <p><strong>ASH version:</strong> 3.5.8</p>
+        </div>
+
+        <h2>Scanner Results</h2>
+        <div class="help-text">
+            <h4>How to read scanner results</h4>
+            <ul>
+                <li><strong>Severity levels:</strong>
+                    <ul>
+                        <li><strong>Suppressed (S):</strong> Findings that have been explicitly suppressed and don't affect scanner status</li>
+                        <li><strong>Critical (C):</strong> Highest severity findings that require immediate attention</li>
+                        <li><strong>High (H):</strong> Serious findings that should be addressed soon</li>
+                        <li><strong>Medium (M):</strong> Moderate risk findings</li>
+                        <li><strong>Low (L):</strong> Lower risk findings</li>
+                        <li><strong>Info (I):</strong> Informational findings with minimal risk</li>
+                    </ul>
+                </li>
+                <li><strong>Duration:</strong> Time taken by the scanner to complete its execution</li>
+                <li><strong>Actionable:</strong> Number of findings at or above the threshold severity level that require attention</li>
+                <li><strong>Result:</strong>
+                    <ul>
+                        <li class="status-passed">PASSED = No findings at or above threshold</li>
+                        <li class="status-failed">FAILED = Findings at or above threshold</li>
+                        <li class="status-missing">MISSING = Required dependencies not available</li>
+                        <li class="status-skipped">SKIPPED = Scanner explicitly disabled</li>
+                        <li class="status-error">ERROR = Scanner execution error</li>
+                    </ul>
+                </li>
+                <li><strong>Threshold:</strong> The minimum severity level that will cause a scanner to fail</li>
+                <li><strong>Statistics calculation:</strong>
+                    <ul>
+                        <li>All statistics are calculated from the final aggregated SARIF report</li>
+                        <li>Suppressed findings are counted separately and do not contribute to actionable findings</li>
+                        <li>Scanner status is determined by comparing actionable findings to the threshold</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <table>
+            <tr>
+                <th>Scanner</th>
+                <th>S</th>
+                <th>C</th>
+                <th>H</th>
+                <th>M</th>
+                <th>L</th>
+                <th>I</th>
+                <th>Duration</th>
+                <th>Actionable</th>
+                <th>Result</th>
+                <th>Threshold</th>
+            </tr>
+        
+            <tr>
+                <td>bandit</td>
+                <td>144</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><1ms</td>
+                <td class="status-passed">0</td>
+                <td class="status-passed">PASSED</td>
+                <td>MEDIUM (global)</td>
+            </tr>
+            
+            <tr>
+                <td>cdk-nag</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><1ms</td>
+                <td class="status-passed">0</td>
+                <td class="status-passed">PASSED</td>
+                <td>MEDIUM (global)</td>
+            </tr>
+            
+            <tr>
+                <td>cfn-nag</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><1ms</td>
+                <td class="status-passed">0</td>
+                <td class="status-passed">PASSED</td>
+                <td>MEDIUM (global)</td>
+            </tr>
+            
+            <tr>
+                <td>checkov</td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><1ms</td>
+                <td class="status-passed">0</td>
+                <td class="status-passed">PASSED</td>
+                <td>MEDIUM (global)</td>
+            </tr>
+            
+            <tr>
+                <td>detect-secrets</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><1ms</td>
+                <td class="status-passed">0</td>
+                <td class="status-passed">PASSED</td>
+                <td>MEDIUM (global)</td>
+            </tr>
+            
+            <tr>
+                <td>grype</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><1ms</td>
+                <td class="status-passed">0</td>
+                <td class="status-passed">PASSED</td>
+                <td>MEDIUM (global)</td>
+            </tr>
+            
+            <tr>
+                <td>npm-audit</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><1ms</td>
+                <td class="status-passed">0</td>
+                <td class="status-passed">PASSED</td>
+                <td>MEDIUM (global)</td>
+            </tr>
+            
+            <tr>
+                <td>opengrep</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><1ms</td>
+                <td class="status-passed">0</td>
+                <td class="status-passed">PASSED</td>
+                <td>MEDIUM (global)</td>
+            </tr>
+            
+            <tr>
+                <td>semgrep</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><1ms</td>
+                <td class="status-passed">0</td>
+                <td class="status-passed">PASSED</td>
+                <td>MEDIUM (global)</td>
+            </tr>
+            
+            <tr>
+                <td>syft</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><1ms</td>
+                <td class="status-passed">0</td>
+                <td class="status-passed">PASSED</td>
+                <td>MEDIUM (global)</td>
+            </tr>
+            </table>
+
+        <h2>Summary</h2>
+        <div class="summary-box">
+            <h3>Findings by Severity</h3><p>Statistics are calculated from the final aggregated SARIF report:</p><ul><li style="color:#6c757d"><strong>SUPPRESSED</strong>: 153 finding(s)</li></ul>
+            <h3>Findings by Type</h3><ul><li>B101: 141 finding(s)</li><li>B404: 1 finding(s)</li><li>B607: 1 finding(s)</li><li>B603: 1 finding(s)</li><li>CKV_AWS_18: 1 finding(s)</li><li>CKV_AWS_21: 1 finding(s)</li><li>CKV_AWS_119: 1 finding(s)</li><li>CKV_AWS_158: 2 finding(s)</li><li>CKV_AWS_26: 1 finding(s)</li><li>CKV_AWS_27: 1 finding(s)</li><li>CKV_AWS_173: 1 finding(s)</li><li>CKV_AWS_117: 1 finding(s)</li></ul>
+            
+        </div>
+
+        <h2>Detailed Findings</h2>
+        
+        <table>
+            <tr>
+                <th>Severity</th>
+                <th>Rule</th>
+                <th>Message</th>
+                <th>Location</th>
+            </tr>
+        
+            <tr>
+                <td colspan="4">No active findings to display</td>
+            </tr>
+            </table>
+            <h3>Suppressed Findings (153)</h3>
+            <p>These findings have been explicitly suppressed and do not affect the scanner result.</p>
+            <table>
+                <tr>
+                    <th>Severity</th>
+                    <th>Rule</th>
+                    <th>Message</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Reason</th>
+                </tr>
+            
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:23</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:24</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:25</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:26</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:27</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:33</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:36</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:37</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:50</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:52</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:53</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:70</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:73</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:74</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:75</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:82</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_ecosystems.py:83</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_ecosystems.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:43</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:49</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:51</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:59</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:60</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:62</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:67</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:69</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:70</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:75</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:80</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:93</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:95</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:109</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:115</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:117</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:119</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:126</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:134</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:136</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:139</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:150</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:151</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_least_privilege.py:157</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_least_privilege.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_region.py:60</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_region.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_region.py:62</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_region.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_region.py:64</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_region.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:36</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:48</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:55</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:64</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:75</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:76</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:78</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:80</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:81</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:90</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:108</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:109</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:161</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:162</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:163</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:176</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:177</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:178</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:179</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_results.py:180</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_results.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B404</td>
+                    <td>Consider possible security implications associated with the subprocess module.</td>
+                    <td>tests/test_security.py:8</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B404&#x27; in &#x27;tests/test_security.py&#x27; with reason: The security regression test runs the build script to prove that APP_DIR is not executed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B607</td>
+                    <td>Starting a process with a partial executable path</td>
+                    <td>tests/test_security.py:36</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B607&#x27; in &#x27;tests/test_security.py&#x27; with reason: Runs bash from PATH in a local test. Test code only.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B603</td>
+                    <td>subprocess call - check for execution of untrusted input.</td>
+                    <td>tests/test_security.py:36</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B603&#x27; in &#x27;tests/test_security.py&#x27; with reason: Fixed argument list, no shell. Test code only.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:37</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:38</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:91</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:92</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:104</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:124</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:149</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:150</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:151</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:182</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:183</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_security.py:210</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_security.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:34</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:39</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:58</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:59</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:60</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:61</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:62</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:63</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:67</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:89</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:90</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_settings.py:96</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_settings.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_stack.py:34</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_stack.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_stack.py:35</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_stack.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_stack.py:68</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_stack.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_stack.py:90</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_stack.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_stack.py:92</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_stack.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:63</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:64</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:70</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:72</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:79</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:85</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:87</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:88</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:94</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:95</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:103</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:104</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:106</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:108</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:110</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:112</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:122</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:124</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:125</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:126</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:134</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:136</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:137</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:147</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:148</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:150</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:159</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:160</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:163</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:174</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:180</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:181</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:182</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:196</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:197</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:198</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_tools.py:201</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_tools.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_trigger.py:14</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_trigger.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_trigger.py:19</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_trigger.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_trigger.py:20</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_trigger.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_trigger.py:21</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_trigger.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_trigger.py:22</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_trigger.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_trigger.py:27</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_trigger.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_trigger.py:34</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_trigger.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_workspace.py:65</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_workspace.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_workspace.py:66</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_workspace.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_workspace.py:67</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_workspace.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-note">NOTE</td>
+                    <td>B101</td>
+                    <td>Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.</td>
+                    <td>tests/test_workspace.py:83</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;B101&#x27; in &#x27;tests/test_workspace.py&#x27; with reason: pytest uses assert statements by design. Test code is not deployed.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-error">ERROR</td>
+                    <td>CKV_AWS_18</td>
+                    <td>Ensure the S3 bucket has access logging enabled</td>
+                    <td>cdk.out/DependencyRemediationAgent.template.json:4</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;CKV_AWS_18&#x27; in &#x27;cdk.out/DependencyRemediationAgent.template.json&#x27; with reason: S3 server access logging is off in the sample. Accepted security debt SD-10.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-error">ERROR</td>
+                    <td>CKV_AWS_21</td>
+                    <td>Ensure the S3 bucket has versioning enabled</td>
+                    <td>cdk.out/DependencyRemediationAgent.template.json:4</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;CKV_AWS_21&#x27; in &#x27;cdk.out/DependencyRemediationAgent.template.json&#x27; with reason: S3 versioning is off because all objects are transient and expire by lifecycle rule. Accepted security debt SD-10.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-error">ERROR</td>
+                    <td>CKV_AWS_119</td>
+                    <td>Ensure DynamoDB Tables are encrypted using a KMS Customer Managed CMK</td>
+                    <td>cdk.out/DependencyRemediationAgent.template.json:106</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;CKV_AWS_119&#x27; in &#x27;cdk.out/DependencyRemediationAgent.template.json&#x27; with reason: DynamoDB uses the AWS owned key for run metadata (no credentials or source code). Accepted security debt SD-2.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-error">ERROR</td>
+                    <td>CKV_AWS_158</td>
+                    <td>Ensure that CloudWatch Log Group is encrypted by KMS</td>
+                    <td>cdk.out/DependencyRemediationAgent.template.json:136</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;CKV_AWS_158&#x27; in &#x27;cdk.out/DependencyRemediationAgent.template.json&#x27; with reason: Log groups use default encryption. Accepted security debt SD-2.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-error">ERROR</td>
+                    <td>CKV_AWS_26</td>
+                    <td>Ensure all data stored in the SNS topic is encrypted</td>
+                    <td>cdk.out/DependencyRemediationAgent.template.json:364</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;CKV_AWS_26&#x27; in &#x27;cdk.out/DependencyRemediationAgent.template.json&#x27; with reason: The SNS topic carries run metadata only and enforces TLS. EventBridge cannot publish to a topic encrypted with the AWS managed SNS key, so encryption needs a customer managed key. Accepted security debt SD-2.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-error">ERROR</td>
+                    <td>CKV_AWS_158</td>
+                    <td>Ensure that CloudWatch Log Group is encrypted by KMS</td>
+                    <td>cdk.out/DependencyRemediationAgent.template.json:805</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;CKV_AWS_158&#x27; in &#x27;cdk.out/DependencyRemediationAgent.template.json&#x27; with reason: Log groups use default encryption. Accepted security debt SD-2.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-error">ERROR</td>
+                    <td>CKV_AWS_27</td>
+                    <td>Ensure all data stored in the SQS queue is encrypted</td>
+                    <td>cdk.out/DependencyRemediationAgent.template.json:947</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;CKV_AWS_27&#x27; in &#x27;cdk.out/DependencyRemediationAgent.template.json&#x27; with reason: False positive. The dead-letter queue is encrypted with SQS-managed server-side encryption (SqsManagedSseEnabled).</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-error">ERROR</td>
+                    <td>CKV_AWS_173</td>
+                    <td>Check encryption settings for Lambda environment variable</td>
+                    <td>cdk.out/DependencyRemediationAgent.template.json:1019</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;CKV_AWS_173&#x27; in &#x27;cdk.out/DependencyRemediationAgent.template.json&#x27; with reason: Lambda environment variables hold resource names and ARNs only, no secrets. Lambda encrypts them at rest with an AWS managed key.</td>
+                </tr>
+                
+                <tr>
+                    <td class="severity-error">ERROR</td>
+                    <td>CKV_AWS_117</td>
+                    <td>Ensure that AWS Lambda function is configured inside a VPC</td>
+                    <td>cdk.out/DependencyRemediationAgent.template.json:1019</td>
+                    <td style="color:#6c757d">Suppressed</td>
+                    <td>(ASH) Suppressing finding for rule &#x27;CKV_AWS_117&#x27; in &#x27;cdk.out/DependencyRemediationAgent.template.json&#x27; with reason: The trigger function does not need VPC access; it calls only AWS APIs. Accepted security debt SD-13.</td>
+                </tr>
+                </table>
+
+        <h2>Scan Metadata</h2>
+        <div class='metadata-section'>
+            <div class="metadata-item">
+                <strong>report_id:</strong> ASH-20261005
+            </div>
+            
+            <div class="metadata-item">
+                <strong>generated_at:</strong> 2026-10-05T22:33:15+00:00
+            </div>
+            
+            <div class="metadata-item">
+                <strong>project_name:</strong> ASH
+            </div>
+            
+            <div class="metadata-item">
+                <strong>tool_version:</strong> 3.5.8
+            </div>
+            
+            <div class="metadata-item">
+                <strong>description:</strong> Automated Security Helper Aggregated Report Post-processor
+            </div>
+            
+            <div class="metadata-item">
+                <strong>summary_stats:</strong> {&#x27;suppressed&#x27;: 459, &#x27;critical&#x27;: 0, &#x27;high&#x27;: 0, &#x27;medium&#x27;: 0, &#x27;low&#x27;: 0, &#x27;info&#x27;: 0, &#x27;start&#x27;: None, &#x27;end&#x27;: None, &#x27;duration&#x27;: 0.0, &#x27;total&#x27;: 0, &#x27;actionable&#x27;: 0, &#x27;passed&#x27;: 10, &#x27;failed&#x27;: 0, &#x27;missing&#x27;: 0, &#x27;skipped&#x27;: 0}
+            </div>
+            
+            <div class="metadata-item">
+                <strong>validation_summary:</strong> {&#x27;scanner_tasks_validation&#x27;: {&#x27;timestamp&#x27;: &#x27;2026-10-05T22:33:34.851285&#x27;, &#x27;expected_count&#x27;: 10, &#x27;actual_count&#x27;: 10, &#x27;missing_count&#x27;: 0, &#x27;has_issues&#x27;: False, &#x27;successfully_retried&#x27;: 0}, &#x27;execution_completion_validation&#x27;: {&#x27;timestamp&#x27;: &#x27;2026-10-05T22:35:22.075338&#x27;, &#x27;expected_count&#x27;: 10, &#x27;completed_count&#x27;: 10, &#x27;missing_count&#x27;: 0, &#x27;unexpected_count&#x27;: 0, &#x27;completion_rate&#x27;: 1.0, &#x27;has_issues&#x27;: False}, &#x27;result_completeness_validation&#x27;: {&#x27;timestamp&#x27;: &#x27;2026-10-05T22:35:22.078214&#x27;, &#x27;expected_count&#x27;: 10, &#x27;final_count&#x27;: 10, &#x27;missing_count&#x27;: 0, &#x27;unexpected_count&#x27;: 0, &#x27;completeness_rate&#x27;: 1.0, &#x27;has_issues&#x27;: False}}
+            </div>
+            
+            <div class="metadata-item">
+                <strong>execution_discrepancy_report:</strong> {}
+            </div>
+            </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+
+[project]
+name = "agentic-dependency-remediation"
+version = "0.1.0"
+description = "Self-correcting AI agent that remediates vulnerable dependencies by using Strands Agents and Amazon Bedrock AgentCore"
+requires-python = ">=3.12"
+dependencies = [
+    "strands-agents==1.56.0",
+    "bedrock-agentcore==1.23.1",
+    "boto3==1.43.99",
+    "defusedxml==0.7.1",
+]
+
+[dependency-groups]
+infra = [
+    "aws-cdk-lib==2.270.0",
+    "constructs==10.8.1",
+]
+dev = [
+    "pytest==9.1.1",
+]
+
+[tool.uv]
+# Supply-chain cooldown: never resolve a package version published in the last 7 days.
+exclude-newer = "7 days"
+# Security floors for transitive dependencies (see SECURITY.md).
+constraint-dependencies = ["pyjwt>=2.15.0"]  # GHSA-42vr-xj54-vc7v, via strands-agents -> mcp
+default-groups = ["infra", "dev"]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["agent", "functions/trigger", "client", "."]
