@@ -1,0 +1,30 @@
+{
+  "app": "python3 app.py",
+  "watch": {
+    "include": [
+      "**"
+    ],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "**/__pycache__",
+      "tests",
+      ".venv",
+      "client",
+      "ci-templates"
+    ]
+  },
+  "context": {
+    "runtime_name": "dependency_remediation_agent",
+    "max_build_attempts": 6,
+    "max_files_changed": 20,
+    "max_tool_calls": 100,
+    "max_concurrent_runs": 10,
+    "max_archive_mb": 200,
+    "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
+    "@aws-cdk/core:target-partitions": [
+      "aws"
+    ],
+    "@aws-cdk/aws-iam:minimizePolicies": true
+  }
+}

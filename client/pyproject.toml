@@ -1,0 +1,19 @@
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+
+[project]
+name = "remediate-client"
+version = "0.1.0"
+description = "Send a repository to the dependency remediation agent and download the verified fix"
+requires-python = ">=3.10"
+dependencies = ["boto3==1.43.99"]
+
+[project.scripts]
+remediate = "remediate:main"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["remediate"]

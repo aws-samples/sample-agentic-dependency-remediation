@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/awslabs/automated-security-helper/refs/heads/main/automated_security_helper/schemas/AshConfig.json
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+#
+# AWS Automated Security Helper (ASH) configuration.
+#
+# Run from the repository root after synthesizing the stack, so that the CloudFormation
+# template in cdk.out/ is scanned too:
+#
+#   uv run cdk synth --quiet
+#   uvx --from git+https://github.com/awslabs/automated-security-helper.git@v3.5.8 ash --mode local
+#
+# Every ignored path and suppressed finding below has a reason. Infrastructure suppressions
+# reference the matching item in SECURITY.md ("Known security considerations").
+
+project_name: agentic-dependency-remediation
+fail_on_findings: true
+
+global_settings:
+  severity_threshold: MEDIUM
+
+  ignore_paths:
+    - path: .venv/**
+      reason: Local virtual environment with third-party packages. Not part of the repository.
+    - path: cdk.out/asset.*/**
+      reason: CDK build assets. They contain a copy of agent/ (scanned in place) and third-party packages bundled into the Lambda function (boto3). Not part of the repository.
+    - path: samples/**
+      reason: Local-only demo projects that are intentionally vulnerable. Ignored by Git and not published.
+    - path: eval/**
+      reason: Local-only evaluation harness. Ignored by Git and not published.
+    - path: .pytest_cache/**
+      reason: Test cache. Not part of the repository.
+
+  suppressions:
+    # ----- Tests ------------------------------------------------------------------------
+    - path: tests/**
+      rule_id: B101
+      reason: pytest uses assert statements by design. Test code is not deployed.
+    - path: tests/test_security.py
+      rule_id: B404
+      reason: The security regression test runs the build script to prove that APP_DIR is not executed.
+    - path: tests/test_security.py
+      rule_id: B603
+      reason: Fixed argument list, no shell. Test code only.
+    - path: tests/test_security.py
+      rule_id: B607
+      reason: Runs bash from PATH in a local test. Test code only.
+
+    # ----- CloudFormation template (checkov) ------------------------------------------
+    - path: cdk.out/*.template.json
+      rule_id: CKV_AWS_119
+      reason: DynamoDB uses the AWS owned key for run metadata (no credentials or source code). Accepted security debt SD-2.
+    - path: cdk.out/*.template.json
+      rule_id: CKV_AWS_158
+      reason: Log groups use default encryption. Accepted security debt SD-2.
+    - path: cdk.out/*.template.json
+      rule_id: CKV_AWS_26
+      reason: The SNS topic carries run metadata only and enforces TLS. EventBridge cannot publish to a topic encrypted with the AWS managed SNS key, so encryption needs a customer managed key. Accepted security debt SD-2.
+    - path: cdk.out/*.template.json
+      rule_id: CKV_AWS_27
+      reason: False positive. The dead-letter queue is encrypted with SQS-managed server-side encryption (SqsManagedSseEnabled).
+    - path: cdk.out/*.template.json
+      rule_id: CKV_AWS_18
+      reason: S3 server access logging is off in the sample. Accepted security debt SD-10.
+    - path: cdk.out/*.template.json
+      rule_id: CKV_AWS_21
+      reason: S3 versioning is off because all objects are transient and expire by lifecycle rule. Accepted security debt SD-10.
+    - path: cdk.out/*.template.json
+      rule_id: CKV_AWS_117
+      reason: The trigger function does not need VPC access; it calls only AWS APIs. Accepted security debt SD-13.
+    - path: cdk.out/*.template.json
+      rule_id: CKV_AWS_173
+      reason: Lambda environment variables hold resource names and ARNs only, no secrets. Lambda encrypts them at rest with an AWS managed key.

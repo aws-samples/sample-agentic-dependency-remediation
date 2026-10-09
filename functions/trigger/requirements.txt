@@ -1,0 +1,5 @@
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+# Bundled so that the function does not depend on the boto3 version in the Lambda runtime
+# (the bedrock-agentcore client and runtimeUserId parameter need a recent boto3).
+boto3==1.43.99
