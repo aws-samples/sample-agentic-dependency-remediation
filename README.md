@@ -180,7 +180,7 @@ From CI, copy a template and follow the setup notes at the top of the file:
 |---|---|
 | GitLab (gitlab.com or self-managed) | `ci-templates/gitlab-ci.yml` |
 | GitHub Actions | `ci-templates/github-actions.yml` |
-| Anything else (Jenkins, Bitbucket, CodePipeline, CRUX) | `ci-templates/remediate-branch.sh` |
+| Anything else (Jenkins, Bitbucket Pipelines, AWS CodePipeline) | `ci-templates/remediate-branch.sh` |
 
 Each template runs on a schedule, applies the patch on a new branch, and opens a review with `report.md` as its
 description. CI authenticates to AWS with OIDC, so there are no long-lived AWS keys. The GitLab template pushes the

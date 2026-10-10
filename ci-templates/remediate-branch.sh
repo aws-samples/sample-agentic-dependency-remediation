@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: MIT-0
-# Generic script for any CI system or a developer laptop (Jenkins, Bitbucket, AWS CodePipeline, CRUX, ...).
+# Generic script for any CI system or a developer laptop (Jenkins, Bitbucket Pipelines, AWS CodePipeline, ...).
 #
 # Runs the agent on the current repository and, when a verified fix is produced, commits it on a
 # new local branch. Pushing and opening the review is left to your tool of choice, for example:
 #   git push origin HEAD && glab mr create --fill --description "$(cat remediation-output/report.md)"
 #   git push origin HEAD && gh pr create --body-file remediation-output/report.md
-#   cr --description "file://remediation-output/report.md"
 #
 # Usage: ci-templates/remediate-branch.sh [extra remediate options, for example --package jinja2]
 set -euo pipefail
