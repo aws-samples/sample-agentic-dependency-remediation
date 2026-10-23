@@ -150,10 +150,16 @@ To change the choice:
 - **Different model:** set `BASE_MODEL_ID`, for example `anthropic.claude-sonnet-4-6`. The geography prefix is still added for you.
   Check the model card of that model, because its profile list can differ.
 - **Exact model or profile:** set `MODEL_ID`, for example the in-Region ID `anthropic.claude-sonnet-4-5-20250929-v1:0`
-  to keep requests in one Region. `MODEL_ID` is required in AWS GovCloud (US) and China.
+  to keep requests in one Region. `MODEL_ID` is required in AWS GovCloud (US-West).
+
+> **Model lifecycle.** Claude Sonnet 4.5 is in the Legacy lifecycle stage on Amazon Bedrock, with an end-of-life date
+> of April 8, 2027. Before that date, set `BASE_MODEL_ID` or `MODEL_ID` to a current Claude model that supports tool use.
 
 `cdk synth` fails with a clear message if the model profile does not match the deployment Region. Choose a Region
-where Amazon Bedrock AgentCore (Runtime and Memory) is available, and grant model access in the Amazon Bedrock console.
+where Amazon Bedrock AgentCore Runtime and AgentCore Memory are available (see
+[Supported AWS Regions](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agentcore-regions.html)).
+AgentCore is not available in the China Regions. In AWS GovCloud (US-West), the stack uses AgentCore Runtime microVMs;
+AgentCore Runtime Instances are not available there. Anthropic models need a one-time use-case form before first use.
 
 Clients use the same Region: set `AWS_REGION` (or pass `remediate --region`), and set the `REMEDIATION_REGION`
 variable in the CI templates.
